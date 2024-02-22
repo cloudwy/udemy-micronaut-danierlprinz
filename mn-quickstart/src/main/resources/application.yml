@@ -1,0 +1,5 @@
+micronaut:
+    application:
+        name: mnQuickstart
+    server:
+        port: 8090
