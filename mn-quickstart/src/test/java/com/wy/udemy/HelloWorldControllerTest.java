@@ -28,6 +28,11 @@ class HelloWorldControllerTest {
         assertEquals(HttpStatus.OK, response.getStatus());
     }
 
-
-
+    @Test
+    void helloFromConfigEndpointReturnsMessageFromConfigFile(){
+        var response = client.toBlocking().exchange("/hello/config", String.class);
+        assertEquals(HttpStatus.OK, response.getStatus());
+        assertEquals("Hello from application.yml", response.getBody().get());
+    }
+    
 }
