@@ -18,13 +18,13 @@ class HelloWorldControllerTest {
     @Test
     void helloWorldEndpointResponseWithProperContent(){
         var response = client.toBlocking().retrieve("/hello");
-        assertEquals("Hello from Service", response);
+        assertEquals("Hello from Second Service", response);
     }
 
     @Test
     void helloWorldEndpointRespondsWithProperStatusCodeAndContent(){
         var response = client.toBlocking().exchange("/hello", String.class);
-        assertEquals("Hello from Service", response.getBody().get());
+        assertEquals("Hello from Second Service", response.getBody().get());
         assertEquals(HttpStatus.OK, response.getStatus());
     }
 

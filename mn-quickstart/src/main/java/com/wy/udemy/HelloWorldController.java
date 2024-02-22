@@ -20,7 +20,10 @@ import jakarta.inject.Inject;
 public class HelloWorldController {
 
     @Inject
-    private HelloWorldService service;
+    private final MyService service;
+    public HelloWorldController(MyService service){
+        this.service = service;
+    }
 
     @Get(produces = MediaType.TEXT_PLAIN)
     public String helloWorld(){
