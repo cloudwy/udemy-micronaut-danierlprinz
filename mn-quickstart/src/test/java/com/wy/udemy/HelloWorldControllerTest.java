@@ -2,7 +2,8 @@ package com.wy.udemy;
 
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.client.annotation.Client;
-import io.micronaut.json.tree.JsonNode;
+//import io.micronaut.json.tree.JsonNode;
+import com.fasterxml.jackson.databind.JsonNode;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import jakarta.inject.Inject;
@@ -40,7 +41,7 @@ class HelloWorldControllerTest {
     void helloFromTranslationEndpointReturnsContentFromConfigFile() {
         var response = client.toBlocking().exchange("/hello/translation", JsonNode.class);
         assertEquals(HttpStatus.OK, response.getStatus());
-        assertEquals("-", response.getBody().get().toString());
+        assertEquals("{\"de\":\"Hallo Welt\",\"en\":\"Hello World\"}", response.getBody().get().toString());
     }
 
 }
