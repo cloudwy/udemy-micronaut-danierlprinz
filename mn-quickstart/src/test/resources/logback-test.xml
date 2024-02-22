@@ -9,8 +9,9 @@
     </appender>
 
     <logger name="com.wy.udemy" level="DEBUG"/>
+    <logger name="io.micronaut.context.condition" level="INFO"/>
 
-    <root level="info">
+    <root level="debug">
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>
