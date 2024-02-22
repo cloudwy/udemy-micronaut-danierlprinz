@@ -27,10 +27,14 @@ public class HelloWorldController {
     @Inject
     private final MyService service;
     private final String helloFromConfig;
+    private final HelloWorldTranslationConfig translationConfig;
+
     public HelloWorldController(MyService service,
-                                @Property(name = "hello.world.message") String helloFromConfig){
+                                @Property(name = "hello.world.message") String helloFromConfig,
+                                HelloWorldTranslationConfig translationConfig){
         this.helloFromConfig = helloFromConfig;
         this.service = service;
+        this.translationConfig = translationConfig;
     }
 
     @Get(produces = MediaType.TEXT_PLAIN)
@@ -43,5 +47,10 @@ public class HelloWorldController {
     public String helloCinfig(){
         LOG.debug("Return Hello From Config Message: {}", helloFromConfig);
         return helloFromConfig;
+    }
+
+    @Get(uri = "/translation", produces = MediaType.APPLICATION_JSON)
+    public HelloWorldTranslationConfig helloTranslation() {
+        return translationConfig;
     }
 }
