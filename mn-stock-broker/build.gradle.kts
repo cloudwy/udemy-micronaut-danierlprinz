@@ -18,6 +18,8 @@ dependencies {
     compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
     testImplementation("io.micronaut:micronaut-http-client")
+    // https://mvnrepository.com/artifact/com.github.javafaker/javafaker
+    implementation("com.github.javafaker:javafaker:1.0.2")
 }
 
 
