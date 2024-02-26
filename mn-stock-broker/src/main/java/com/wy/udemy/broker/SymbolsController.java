@@ -9,8 +9,14 @@ import java.util.List;
 @Controller("/symbols")
 public class SymbolsController {
 
+    private final InMemoryStore inMemoryStore;
+
+    public SymbolsController(InMemoryStore inMemoryStore) {
+        this.inMemoryStore = inMemoryStore;
+    }
+
     @Get
     public List<Symbol> getAll(){
-        return new ArrayList<>();
+        return new ArrayList<>(inMemoryStore.getSymbols().values());
     }
 }
