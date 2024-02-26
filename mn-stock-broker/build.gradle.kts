@@ -19,7 +19,9 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     testImplementation("io.micronaut:micronaut-http-client")
     // https://mvnrepository.com/artifact/com.github.javafaker/javafaker
-    implementation("com.github.javafaker:javafaker:1.0.2")
+    // https://github.com/DiUS/java-faker/issues/327
+    implementation("com.github.javafaker:javafaker:1.0.2"){exclude(module = "snakeyaml")}
+    implementation("org.yaml:snakeyaml:1.17")
 }
 
 
