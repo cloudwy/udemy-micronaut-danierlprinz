@@ -8,6 +8,7 @@ import io.micronaut.http.client.annotation.Client;
 import io.micronaut.json.tree.JsonNode;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
@@ -23,6 +24,11 @@ public class SymbolsControllerTest {
     @Inject
     InMemoryStore inMemoryStore;
 
+    @BeforeEach
+    void setup(){
+        inMemoryStore.initializeWith(10);
+    }
+
     @Test
     void symbolsEndpointReturnsListofSymbol() {
         var response = client.toBlocking().exchange("/", JsonNode.class);
@@ -37,6 +43,6 @@ public class SymbolsControllerTest {
         Symbol symbols = inMemoryStore.getSymbols().get("TEST");
         var response = client.toBlocking().exchange("/" + testSymbol.value(), JsonNode.class);
         assertEquals(HttpStatus.OK, response.getStatus());
-        assertEquals(testSymbol.value(), response.getBody().get().get("value").getValue()); //attention!
+        assertEquals(testSymbol.value(), response.getBody().get().get("value").getValue());
     }
 }
