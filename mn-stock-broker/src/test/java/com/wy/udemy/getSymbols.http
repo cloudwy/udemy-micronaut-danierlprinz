@@ -1,2 +1,3 @@
-GET localhost:8080/symbols
+#GET localhost:8080/symbols
 #GET localhost:8080/symbols/SBFGP
+GET localhost:8080/symbols/filter?max=5
