@@ -20,7 +20,7 @@ import lombok.*;
 @Introspected
 @Serdeable
 @AllArgsConstructor
-@Data
+//@Data
 public class WatchList {
 
     private List<Symbol> symbols;
@@ -29,11 +29,11 @@ public class WatchList {
         this.symbols = new ArrayList<>();
     }
 
-//    public List<Symbol> getSymbols() {
-//        return symbols;
-//    }
-//
-//    public void setSymbols(List<Symbol> symbols) {
-//        this.symbols = symbols;
-//    }
+    public List<Symbol> getSymbols() {
+        return symbols;
+    }
+
+    public void setSymbols(List<Symbol> symbols) {
+        this.symbols = symbols;
+    }
 }
