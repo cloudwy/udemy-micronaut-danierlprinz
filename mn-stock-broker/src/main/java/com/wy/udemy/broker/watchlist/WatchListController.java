@@ -1,6 +1,7 @@
 package com.wy.udemy.broker.watchlist;
 
 import com.wy.udemy.broker.data.InMemoryAccountStore;
+import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
@@ -21,10 +22,11 @@ public record WatchListController(InMemoryAccountStore store) {
         return store.updateWatchList(ACCOUNT_ID, watchList);
     }
 
-    @Status(HttpStatus.NO_CONTENT)
+    @Status(HttpStatus.CREATED)
     @Delete(produces = MediaType.APPLICATION_JSON)
-    public void delete(){
+    public HttpResponse<Void> delete(){
         store.deleteWatchList(ACCOUNT_ID);
+        return HttpResponse.noContent();
     }
 
 }
