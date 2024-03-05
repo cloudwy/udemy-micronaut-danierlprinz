@@ -1,7 +1,6 @@
-package com.wy.udemy;
+package com.wy.udemy.broker;
 
-import com.wy.udemy.broker.InMemoryStore;
-import com.wy.udemy.broker.Symbol;
+import com.wy.udemy.broker.data.InMemoryStore;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;

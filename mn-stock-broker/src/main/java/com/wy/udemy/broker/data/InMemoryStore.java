@@ -1,6 +1,7 @@
-package com.wy.udemy.broker;
+package com.wy.udemy.broker.data;
 
 import com.github.javafaker.Faker;
+import com.wy.udemy.broker.Symbol;
 import io.micronaut.http.server.netty.MicronautHttpData;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Singleton;

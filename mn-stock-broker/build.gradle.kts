@@ -24,6 +24,9 @@ dependencies {
     implementation("org.yaml:snakeyaml:1.17")
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     implementation("com.fasterxml.jackson.core:jackson-databind:2.16.1")
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    implementation("org.projectlombok:lombok")
+
 }
 
 
