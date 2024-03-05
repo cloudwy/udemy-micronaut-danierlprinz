@@ -47,12 +47,7 @@ public class WatchListControllerTest {
 
     @Test
     void returnsWatchListForTestAccount(){
-        WatchList watchList = new WatchList();
-        watchList.setSymbols(Stream.of("AAPL", "GDDGL", "MSFT").
-                map(Symbol::new).toList());
-//        inMemoryAccountStore.updateWatchList(TEST_ACCOUNT_ID, new WatchList(Stream.of("AAPL", "GDDGL", "MSFT").
-//                map(Symbol::new).toList()));
-        inMemoryAccountStore.updateWatchList(TEST_ACCOUNT_ID, watchList);
+        givenWatchListForAccountExists();
 
         var response = client.toBlocking().exchange("/", JsonNode.class);
         assertEquals(HttpStatus.OK, response.getStatus());
@@ -60,6 +55,13 @@ public class WatchListControllerTest {
                 response.getBody().get().getValue().toString()
         );
 
+    }
+
+    private void givenWatchListForAccountExists(){
+        WatchList watchList = new WatchList();
+        watchList.setSymbols(Stream.of("AAPL", "GDDGL", "MSFT").
+                map(Symbol::new).toList());
+        inMemoryAccountStore.updateWatchList(TEST_ACCOUNT_ID, watchList);
     }
 
     @Test
@@ -71,5 +73,16 @@ public class WatchListControllerTest {
         final HttpResponse<Object> added = client.toBlocking().exchange(request);
         assertEquals(HttpStatus.OK, added.getStatus());
         assertEquals(symbols, inMemoryAccountStore.getWatchList(TEST_ACCOUNT_ID).getSymbols());
+    }
+
+    @Test
+    void canRemoveWatchListForTestAccount(){
+        givenWatchListForAccountExists();
+        assertFalse(inMemoryAccountStore.getWatchList(TEST_ACCOUNT_ID).getSymbols().isEmpty());
+//        final var request = HttpRequest.DELETE("/");
+//        final HttpResponse<Object> deleted = client.toBlocking().exchange(request);
+        var deleted = client.toBlocking().exchange(HttpRequest.DELETE("/"));
+        assertEquals(HttpStatus.NO_CONTENT, deleted.getStatus());
+        assertTrue(inMemoryAccountStore.getWatchList(TEST_ACCOUNT_ID).getSymbols().isEmpty());
     }
 }
