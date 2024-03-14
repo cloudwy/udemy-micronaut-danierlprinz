@@ -5,6 +5,7 @@ import static com.wy.udemy.broker.data.InMemoryAccountStore.ACCOUNT_ID;
 import com.wy.udemy.broker.api.RestApiResponse;
 import com.wy.udemy.broker.data.InMemoryAccountStore;
 import com.wy.udemy.broker.wallet.error.CustomError;
+import com.wy.udemy.broker.wallet.error.FiatCurrencyNotSupportedException;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.MediaType;
@@ -45,5 +46,8 @@ public record WalletController(InMemoryAccountStore store) {
     @Post(value = "/withdraw", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
     public void withdrawFiatMoney(@Body WithdrawFiatMoney withdraw){
         // Option2: Custom Error Processing
+        if (!SUPPORTED_FIAT_CURRENCIES.contains(withdraw.symbol().value())){
+            throw new FiatCurrencyNotSupportedException(String.format("Only %s are supported", SUPPORTED_FIAT_CURRENCIES));
+        }
     }
 }
