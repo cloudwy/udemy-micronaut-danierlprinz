@@ -22,11 +22,10 @@ public record WatchListController(InMemoryAccountStore store) {
         return store.updateWatchList(ACCOUNT_ID, watchList);
     }
 
-    @Status(HttpStatus.CREATED)
+    @Status(HttpStatus.NO_CONTENT)
     @Delete(produces = MediaType.APPLICATION_JSON)
-    public HttpResponse<Void> delete(){
+    public void delete(){
         store.deleteWatchList(ACCOUNT_ID);
-        return HttpResponse.noContent();
     }
 
 }
