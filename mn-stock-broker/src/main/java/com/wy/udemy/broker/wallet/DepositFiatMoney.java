@@ -8,7 +8,7 @@ import io.micronaut.serde.annotation.Serdeable;
 
 @Serdeable
 public record DepositFiatMoney(
-        UUID acoountId,
+        UUID accountId,
         UUID walletId,
         Symbol symbol,
         BigDecimal amount
