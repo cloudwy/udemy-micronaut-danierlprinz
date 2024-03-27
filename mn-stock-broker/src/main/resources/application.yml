@@ -4,15 +4,15 @@ micronaut:
     server:
         port: 8080
 
-#hello:
-#    controller:
-#        path: "/hello"
-#    service:
-#        greeting: "Hello from Service!"
-#    config:
-#        greeting:
-#            de: "Hallo"
-#            en: "Hello"
+hello:
+    controller:
+        path: "/hello"
+    service:
+        greeting: "Hello from Service!"
+    config:
+        greeting:
+            de: "Hallo"
+            en: "Hello"
 
 jackson:
     bean-introspection-module: true
@@ -20,13 +20,15 @@ jackson:
 datasources:
     default:
         url: jdbc:postgresql://localhost:5432/mn-stock-broker
-#        username: ${PG_USERNAME:postgres}
-#        password: ${PG_PASSWORD:secret}
-        username: postgres
-        password: 'secret'
+        username: ${PG_USERNAME:postgres}
+        password: ${PG_PASSWORD:secret}
+#        username: postgres
+#        password: 'secret'
         driver-class-name: org.postgresql.Driver
 #        schema-genenerate: CREATE_DROP
         dialect: POSTGRES
+        schemas: mn
+        default-schema: mn
 
 jpa:
     default:
@@ -42,16 +44,5 @@ flyway:
         default:
             enabled: true
 #            clean-schema: false
-#            schemas: mn
-#            default-schema: mn
-
-#flyway:
-#    datasources:
-#        default:
-#            enabled: true
-#            clean-schema: false
-#            url: ${PG_JDBC_URL:`jdbc:postgresql://127.0.0.1:5432/mn-stock-broker`}
-#            user: ${PG_USERNAME: postgres}
-#            password: ${PG_PASSWORD}
 #            schemas: mn
 #            default-schema: mn
