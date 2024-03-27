@@ -9,7 +9,9 @@
         </encoder>
     </appender>
 
-    <logger name="com.wycloud.udemy" level="DEBUG"/>
+<!--    <logger name="com.wycloud.udemy" level="DEBUG"/>-->
+<!--    <logger name="org.flywaydb.core" level="DEBUG"/>-->
+<!--    <logger name="io.micronaut.flyway" level="DEBUG"/>-->
 
     <root level="info">
         <appender-ref ref="STDOUT"/>

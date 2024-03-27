@@ -1,0 +1,91 @@
+#micronaut:
+#  server:
+#    port: 8080
+#  application:
+#    name: mn-data-pg
+#
+#jackson:
+#  bean-introspection-module: true
+#
+#datasources:
+#  default:
+#    url: jdbc:postgresql://localhost:3036/postgres
+#    driverClassName: org.postgresql.Driver
+#    username: postgres
+#    password: 'sa'
+#    dialect: POSTGRES
+#
+#---
+#jpa:
+#  default:
+#    properties:
+#      hibernate:
+#        bytecode:
+#          provider: none
+#        hbm2ddl:
+#          auto: validate
+#        show_sql: true
+#
+#flyway:
+#  datasources:
+#    default:
+#      enabled: true
+
+
+micronaut:
+  application:
+    name: mn-stock-broker
+  server:
+    port: 8080
+
+#hello:
+#    controller:
+#        path: "/hello"
+#    service:
+#        greeting: "Hello from Service!"
+#    config:
+#        greeting:
+#            de: "Hallo"
+#            en: "Hello"
+
+jackson:
+  bean-introspection-module: true
+
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:3036/postgres
+    #        username: ${PG_USERNAME:postgres}
+    #        password: ${PG_PASSWORD:secret}
+    username: postgres
+    password: 'sa'
+    driver-class-name: org.postgresql.Driver
+    #        schema-genenerate: CREATE_DROP
+    dialect: POSTGRES
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        bytecode:
+          provider: none
+        hbm2ddl:
+          auto: validate
+        show_sql: true
+flyway:
+  datasources:
+    default:
+      enabled: true
+#            clean-schema: false
+#            schemas: mn
+#            default-schema: mn
+
+#flyway:
+#    datasources:
+#        default:
+#            enabled: true
+#            clean-schema: false
+#            url: ${PG_JDBC_URL:`jdbc:postgresql://127.0.0.1:5432/mn-stock-broker`}
+#            user: ${PG_USERNAME: postgres}
+#            password: ${PG_PASSWORD}
+#            schemas: mn
+#            default-schema: mn
